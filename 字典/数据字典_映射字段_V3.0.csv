@@ -1,0 +1,140 @@
+对象,源表,源字段,源类型,源长度,目标表,目标字段,目标类型,目标长度,转换规则,源非空行数,示例值,状态,源行数
+部门,t_base_department,ID,int,4,Department,typeid,nvarchar,25,级联编号,1,1,已映射,1
+部门,t_base_department,code,varchar,50,Department,usercode / Comment,nvarchar,26,数字化；原编号入备注,0,,已映射,1
+部门,t_base_department,fullname,varchar,100,Department,FullName,nvarchar,50,fullname 为纯数字时改用 name,1,1,已映射,1
+部门,t_base_department,name,varchar,100,Department,FullName,nvarchar,50,fullname 无效时的回退,1,业务部,已映射,1
+部门,t_base_department,comment,varchar,200,Department,Comment,nvarchar,256,源备注拼接,0,,已映射,1
+部门,t_base_department,pym,varchar,100,Department,namepy,nvarchar,50,转大写,1,1,已映射,1
+部门,t_base_department,del,int,4,Department,deleted,bit,1,0→0，非0→1,1,0,已映射,1
+部门,t_base_department,par_id,int,4,Department,parid,nvarchar,25,父部门映射,1,0,已映射,1
+职员,t_base_employees,id,int,4,Employee,typeId,nvarchar,25,根下顺延编号（目标已有 00001 时从 00002 起）,1,1,已映射,1
+职员,t_base_employees,par_id,int,4,Employee,Parid,nvarchar,25,父职员映射,1,0,已映射,1
+职员,t_base_employees,fullname,varchar,100,Employee,FullName,nvarchar,66,直接对应,1,管理员,已映射,1
+职员,t_base_employees,name,varchar,100,Employee,Name,nvarchar,30,直接对应,1,管理员,已映射,1
+职员,t_base_employees,code,varchar,100,Employee,UserCode / Comment,nvarchar,26,数字化；原编号入备注,1,00011,已映射,1
+职员,t_base_employees,pym,varchar,100,Employee,Namepy,nvarchar,66,转大写,1,gly,已映射,1
+职员,t_base_employees,depid,int,4,Employee,Department,nvarchar,25,映射到部门新编号；depid=0 时为空,1,0,已映射,1
+职员,t_base_employees,tel,varchar,100,Employee,Tel,nvarchar,20,电话；为空时用 mobileNo 兜底,0,,已映射,1
+职员,t_base_employees,addr,varchar,200,Employee,Address,nvarchar,66,地址,0,,已映射,1
+职员,t_base_employees,candel,int,4,Employee,deleted,bit,1,停用标记参与判断,1,0,已映射,1
+职员,t_base_employees,del,int,4,Employee,deleted,bit,1,0→0，非0→1,1,0,已映射,1
+职员,t_base_employees,comment,varchar,200,Employee,Comment,nvarchar,256,源备注拼接,0,,已映射,1
+职员,t_base_employees,LowDiscount,numeric,13,Employee,Comment,nvarchar,256,写入备注“折扣:xx”,1,10.0000000000,已映射,1
+职员,t_base_employees,mobileNo,varchar,16,Employee,Tel,nvarchar,20,tel 为空时写入 Tel（目标无独立 Mobile 列）,0,,已映射,1
+存货商品,t_base_goods_inner,ID,int,4,ptype,typeId,nvarchar,50,按 PAR_ID 级联生成编号,2,1,已映射,2
+存货商品,t_base_goods_inner,PAR_ID,int,4,ptype,ParId,nvarchar,50,父商品映射；根为 00000,2,0,已映射,2
+存货商品,t_base_goods_inner,code,varchar,100,ptype,UserCode / Comment,nvarchar,50,数字化；原编号入备注,2,001,已映射,2
+存货商品,t_base_goods_inner,barcode,varchar,1000,ptype,barcode / T_Jxc_PtypeUnit.BarCode,nvarchar,50,商品条码,0,,已映射,2
+存货商品,t_base_goods_inner,fullname,varchar,100,ptype,FullName,nvarchar,66,直接对应，截 132,2,测试商品,已映射,2
+存货商品,t_base_goods_inner,name,varchar,100,ptype,Name,nvarchar,30,直接对应，截 60,0,,已映射,2
+存货商品,t_base_goods_inner,standard,varchar,100,ptype,Standard,nvarchar,120,规格,0,,已映射,2
+存货商品,t_base_goods_inner,xh,varchar,100,ptype,Type,nvarchar,60,型号,0,,已映射,2
+存货商品,t_base_goods_inner,addr,varchar,100,ptype,Area,nvarchar,30,产地,0,,已映射,2
+存货商品,t_base_goods_inner,unit1,varchar,100,ptype,Unit1 / T_Jxc_PtypeUnit.UnitName,nvarchar,8,基本单位；源空补“个”,0,,已映射,2
+存货商品,t_base_goods_inner,unit2,varchar,100,ptype,Unit2 / UnitOther,nvarchar,8,辅助单位；U2*/U3*/U4* 价格列写 nUnit=2..4,0,,已映射,2
+存货商品,t_base_goods_inner,unitrelation,numeric,13,ptype,UnitRate1 / T_Jxc_PtypeUnit.UnitRate,numeric,9,换算率，0 或空按 1,2,1.0000000000,已映射,2
+存货商品,t_base_goods_inner,price,numeric,13,ptype,preprice4 / T_Jxc_PtypeUnit.RetailPrice,numeric,9,零售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,price1,numeric,13,ptype,preprice1 / TradePrice1,numeric,9,预设售价1,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,price2,numeric,13,ptype,preprice2 / TradePrice2,numeric,9,预设售价2,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,price3,numeric,13,ptype,preprice3 / TradePrice3,numeric,9,预设售价3,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,pf_price,numeric,13,ptype,T_Jxc_PtypeUnit.TradePrice6,,,批发价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,sizegroupid,int,4,ptype,Comment,nvarchar,256,写入备注“规格组:xxx”,2,1,已映射,2
+存货商品,t_base_goods_inner,recprice,numeric,13,ptype,recPrice / RecPrice.BuyPrice,float,8,最近进价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,recprice1,numeric,13,ptype,RecPrice.SalePrice,,,最近售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,del,int,4,ptype,deleted,bit,1,0→0，非0→1,2,0,已映射,2
+存货商品,t_base_goods_inner,costmode,int,4,ptype,costmode,int,4,仅 0/1/3/4 合法，其余按 0,2,0,已映射,2
+存货商品,t_base_goods_inner,pym,varchar,100,ptype,Namepy,nvarchar,66,转大写,2,cssp,已映射,2
+存货商品,t_base_goods_inner,warnup,numeric,13,ptype,warnup,numeric,9,库存上限,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,warndown,numeric,13,ptype,warndown,numeric,9,库存下限,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,lowprice,numeric,13,ptype,MinSalePrice / T_Jxc_PtypeUnit.MinSalePrice,numeric,9,最低售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,orderly,int,4,ptype,OrderNo,int,4,排序号,2,0,已映射,2
+存货商品,t_base_goods_inner,comment,varchar,200,ptype,Comment,nvarchar,256,前置标记 + 规格组备注,0,,已映射,2
+存货商品,t_base_goods_inner,price4,numeric,13,ptype,preprice5 / TradePrice4,numeric,9,预设售价4,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,price5,numeric,13,ptype,preprice6 / TradePrice5,numeric,9,预设售价5,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,unit3,varchar,100,ptype,Unit3,nvarchar,8,第三单位,0,,已映射,2
+存货商品,t_base_goods_inner,unit4,varchar,100,ptype,UnitOther,nvarchar,8,第四单位,0,,已映射,2
+存货商品,t_base_goods_inner,unitrelation2,numeric,13,ptype,UnitRate2 / T_Jxc_PtypeUnit.UnitRate,numeric,9,辅助单位换算率,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,unitrelation3,numeric,13,T_Jxc_PtypeUnit,UnitRate（nUnit=3）,,,第三单位换算率,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,unitrelation4,numeric,13,T_Jxc_PtypeUnit,UnitRate（nUnit=4）,,,第四单位换算率,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U2Price,numeric,13,T_Jxc_PtypeUnit,RetailPrice（nUnit=2）,,,第二单位零售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U2LowPrice,numeric,13,T_Jxc_PtypeUnit,MinSalePrice（nUnit=2）,,,第二单位最低售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U2PfPrice,numeric,13,T_Jxc_PtypeUnit,TradePrice6（nUnit=2）,,,第二单位批发价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U2Price1,numeric,13,T_Jxc_PtypeUnit,TradePrice1（nUnit=2）,,,第二单位预设售价1,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U2Price2,numeric,13,T_Jxc_PtypeUnit,TradePrice2（nUnit=2）,,,预设售价2,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U2Price3,numeric,13,T_Jxc_PtypeUnit,TradePrice3（nUnit=2）,,,预设售价3,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U2Price4,numeric,13,T_Jxc_PtypeUnit,TradePrice4（nUnit=2）,,,预设售价4,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U2Price5,numeric,13,T_Jxc_PtypeUnit,TradePrice5（nUnit=2）,,,预设售价5,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U3Price,numeric,13,T_Jxc_PtypeUnit,RetailPrice（nUnit=3）,,,第三单位零售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U3LowPrice,numeric,13,T_Jxc_PtypeUnit,MinSalePrice（nUnit=3）,,,第三单位最低售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U3PfPrice,numeric,13,T_Jxc_PtypeUnit,TradePrice6（nUnit=3）,,,第三单位批发价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U3Price1,numeric,13,T_Jxc_PtypeUnit,TradePrice1（nUnit=3）,,,第三单位预设售价1,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U3Price2,numeric,13,T_Jxc_PtypeUnit,TradePrice2（nUnit=3）,,,预设售价2,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U3Price3,numeric,13,T_Jxc_PtypeUnit,TradePrice3（nUnit=3）,,,预设售价3,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U3Price4,numeric,13,T_Jxc_PtypeUnit,TradePrice4（nUnit=3）,,,预设售价4,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U3Price5,numeric,13,T_Jxc_PtypeUnit,TradePrice5（nUnit=3）,,,预设售价5,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U4Price,numeric,13,T_Jxc_PtypeUnit,RetailPrice（nUnit=4）,,,第四单位零售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U4LowPrice,numeric,13,T_Jxc_PtypeUnit,MinSalePrice（nUnit=4）,,,第四单位最低售价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U4PfPrice,numeric,13,T_Jxc_PtypeUnit,TradePrice6（nUnit=4）,,,第四单位批发价,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U4Price1,numeric,13,T_Jxc_PtypeUnit,TradePrice1（nUnit=4）,,,第四单位预设售价1,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U4Price2,numeric,13,T_Jxc_PtypeUnit,TradePrice2（nUnit=4）,,,预设售价2,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U4Price3,numeric,13,T_Jxc_PtypeUnit,TradePrice3（nUnit=4）,,,预设售价3,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U4Price4,numeric,13,T_Jxc_PtypeUnit,TradePrice4（nUnit=4）,,,预设售价4,2,0E-10,已映射,2
+存货商品,t_base_goods_inner,U4Price5,numeric,13,T_Jxc_PtypeUnit,TradePrice5（nUnit=4）,,,预设售价5,2,0E-10,已映射,2
+未迁移,t_base_GoodsBar,goodsID,int,4,xw_PtypeBarCode,PTypeId,nvarchar,50,商品编号映射,0,,已映射,0
+未迁移,t_base_GoodsBar,barCode,varchar,100,xw_PtypeBarCode,BarCode,nvarchar,30,条码文本,0,,已映射,0
+未迁移,t_base_GoodsBar,Unit,int,4,xw_PtypeBarCode,UnitID,nvarchar,21,必须写数字串 0，避免财贸取条码报类型错,0,,已映射,0
+结存库存,t_base_goodsstock,goodsid,int,4,GoodsStocks / GoodsStockscost,PtypeId,nvarchar,50,源商品映射,1,2,已映射,1
+结存库存,t_base_goodsstock,stid,int,4,GoodsStocks / GoodsStockscost,KtypeId / KTypeID,nvarchar,25,源仓库映射,1,48,已映射,1
+结存库存,t_base_goodsstock,JobNumber,varchar,20,GoodsStockscost,GoodsOrder,int,4,固定 0（成本层顺序）,1,0,已映射,1
+结存库存,t_base_goodsstock,goodsqty,numeric,13,GoodsStocks / GoodsStockscost,Qty,numeric,9,当前库存快照,1,100.0000000000,已映射,1
+结存库存,t_base_goodsstock,price,numeric,13,GoodsStockscost,Price,numeric,9,成本单价,1,1000.0000000000,已映射,1
+结存库存,t_base_goodsstock,total,numeric,13,GoodsStockscost,Total,numeric,9,成本金额；强制 Qty×Price=Total,1,100000.0000000000,已映射,1
+客户价格追踪,t_base_price,goodsid,int,4,xw_P_PriceFollow,PTypeId,nvarchar,50,商品编号映射,0,,已映射,0
+客户价格追踪,t_base_price,wldwid,int,4,xw_P_PriceFollow,BTypeId,nvarchar,50,客户编号映射,0,,已映射,0
+客户价格追踪,t_base_price,costprice,numeric,13,xw_P_PriceFollow,Price / PRTypeId=0005,numeric,13,进价追踪,0,,已映射,0
+客户价格追踪,t_base_price,saleprice,numeric,13,xw_P_PriceFollow,Price / PRTypeId=0007,numeric,13,售价追踪,0,,已映射,0
+客户价格追踪,t_base_price,buydiscount,numeric,13,xw_P_PriceFollow,Price / PRTypeId=0006,numeric,13,进货折扣,0,,已映射,0
+客户价格追踪,t_base_price,salediscount,numeric,13,xw_P_PriceFollow,Price / PRTypeId=0008,numeric,13,销售折扣,0,,已映射,0
+仓库,t_base_storage_inner,id,int,4,Stock,typeId,nvarchar,25,按 par_id 级联编号,4,1,已映射,4
+仓库,t_base_storage_inner,par_id,int,4,Stock,parid,nvarchar,25,父仓映射；根 00000,4,0,已映射,4
+仓库,t_base_storage_inner,del,int,4,Stock,deleted,bit,1,0→0，非0→1,4,0,已映射,4
+仓库,t_base_storage_inner,pym,varchar,100,Stock,Namepy,nvarchar,66,转大写,4,sczg,已映射,4
+仓库,t_base_storage_inner,type,int,4,Stock,Comment,nvarchar,256,仓库类型写入备注,4,0,已映射,4
+仓库,t_base_storage_inner,needcheck,int,4,Stock,Comment,nvarchar,256,是否盘点写入备注,4,0,已映射,4
+仓库,t_base_storage_inner,fullname,varchar,100,Stock,FullName,nvarchar,66,直接对应,4,商场专柜,已映射,4
+仓库,t_base_storage_inner,name,varchar,100,Stock,Name,nvarchar,30,直接对应,4,商场专柜,已映射,4
+仓库,t_base_storage_inner,code,varchar,100,Stock,UserCode / Comment,nvarchar,26,UserCode=新编号；原编号入备注,1,1,已映射,4
+仓库,t_base_storage_inner,comment,varchar,200,Stock,Comment,nvarchar,256,源备注拼接,0,,已映射,4
+仓库,t_base_storage_inner,orderly,int,4,Stock,OrderNo,int,4,排序号,4,0,已映射,4
+往来单位,T_base_wldw_inner,id,int,4,Btype,typeId,nvarchar,25,按父子关系级联生成 5 位段编号；ParRec 回填根记录,4,1,已映射,4
+往来单位,T_base_wldw_inner,par_id,int,4,Btype,parid,nvarchar,25,父ID映射为新父编号，根为 00000,4,0,已映射,4
+往来单位,T_base_wldw_inner,code,varchar,50,Btype,UserCode / Comment,nvarchar,26,编号数字化；原编号写入备注“原编号:xxx”,4,001,已映射,4
+往来单位,T_base_wldw_inner,fullname,varchar,100,Btype,FullName,nvarchar,66,直接对应，超长截 132,4,商场专柜,已映射,4
+往来单位,T_base_wldw_inner,name,varchar,100,Btype,Name,nvarchar,30,直接对应，超长截 60,4,商场专柜,已映射,4
+往来单位,T_base_wldw_inner,type,int,4,Btype,isclient / Comment,int,4,0/1/2→客户(1)，3→供应商(0)；类型名入备注,4,0,已映射,4
+往来单位,T_base_wldw_inner,addr,varchar,200,Btype,TelAndAddress,nvarchar,66,直接对应,0,,已映射,4
+往来单位,T_base_wldw_inner,tel,varchar,100,Btype,Mobile,nvarchar,60,写入手机/联系电话列,0,,已映射,4
+往来单位,T_base_wldw_inner,postcode,varchar,20,Btype,PostCode,nvarchar,50,直接对应,0,,已映射,4
+往来单位,T_base_wldw_inner,person,varchar,50,Btype,Person,nvarchar,50,联系人,0,,已映射,4
+往来单位,T_base_wldw_inner,tax,varchar,50,Btype,TaxNumber,nvarchar,50,税号,0,,已映射,4
+往来单位,T_base_wldw_inner,bankcount,varchar,200,Btype,BankAndAcount / BankAcount,nvarchar,50,两列同写银行账号,0,,已映射,4
+往来单位,T_base_wldw_inner,ystotal00,numeric,13,Btype,ARTotal00,numeric,9,应收账款期初,4,0E-10,已映射,4
+往来单位,T_base_wldw_inner,yftotal00,numeric,13,Btype,APTotal00,numeric,9,应付账款期初,4,0E-10,已映射,4
+往来单位,T_base_wldw_inner,del,int,4,Btype,deleted,bit,1,0→0，非0→1,4,0,已映射,4
+往来单位,T_base_wldw_inner,pym,varchar,100,Btype,Namepy,nvarchar,66,转大写,4,sczg,已映射,4
+往来单位,T_base_wldw_inner,comment,varchar,200,Btype,Comment,nvarchar,256,前置“竞驰导入|”标记后拼接源备注,0,,已映射,4
+往来单位,T_base_wldw_inner,isstop,int,4,Btype,deleted,bit,1,任一停用标记为真则 deleted=1,4,0,已映射,4
+往来单位,T_base_wldw_inner,EMAIL,varchar,255,Btype,Email,nvarchar,100,直接对应,0,,已映射,4
+往来单位,T_base_wldw_inner,orderly,int,4,Btype,OrderNo,int,4,源为 0 时用原ID,4,0,已映射,4
+往来单位,T_base_wldw_inner,Fax,varchar,200,Btype,fax,nvarchar,30,直接对应,0,,已映射,4
+往来单位,T_base_wldw_inner,BelongUserId,int,4,Btype,EtypeID,nvarchar,25,映射到职员新编号；无则空,4,0,已映射,4
+往来关系,t_base_wldw_join,fullname,varchar,100,Btype,FullName / Name / Namepy,nvarchar,66,仅“另建客户”模式使用,1,加盟代理:客户,已映射,1
+往来关系,t_base_wldw_join,type,int,4,Btype,Comment,nvarchar,256,1→兼客户，其余→兼供应商,1,1,已映射,1
+往来关系,t_base_wldw_join,wldwid,int,4,Btype,Comment / SettleBtypeId,nvarchar,256,默认折算备注“兼客户/兼供应商”；勾选时另建客户行,1,3,已映射,1
+期初库存,t_prime_goodsstock,goodsid,numeric,9,IniGoodsStocks,PtypeId,nvarchar,50,源商品ID→目标商品编号,1,2,已映射,1
+期初库存,t_prime_goodsstock,stid,numeric,9,IniGoodsStocks,KtypeId,nvarchar,25,源仓库ID→目标仓库编号,1,48,已映射,1
+期初库存,t_prime_goodsstock,jobnumber,varchar,20,IniGoodsStocks,JobNumber,nvarchar,20,批次/工单号,1,0,已映射,1
+期初库存,t_prime_goodsstock,outdate,varchar,10,IniGoodsStocks,OutFactoryDate,nvarchar,10,出厂日期,0,,已映射,1
+期初库存,t_prime_goodsstock,goodsqty,numeric,13,IniGoodsStocks,Qty,numeric,9,期初数量,1,100.0000000000,已映射,1
+期初库存,t_prime_goodsstock,price,numeric,13,IniGoodsStocks,Price,numeric,9,期初单价；金额/数量不一致时按金额重算,1,1000.0000000000,已映射,1
+期初库存,t_prime_goodsstock,total,numeric,13,IniGoodsStocks,Total,numeric,9,期初金额,1,100000.0000000000,已映射,1
