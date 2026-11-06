@@ -555,7 +555,7 @@ def import_all(src_cn, tgt_cn, options=None, log=None, backup_path=None):
                 "Name": cut(s(r.get("name")), 60), "UserCode": e["new"],
                 "Department": dep_new, "Tel": cut(r.get("tel"), 40), "Address": cut(r.get("addr"), 132),
                 "Comment": _clean_comment(r.get("comment"), _marker(r.get("code"), e["old"],
-                        "折扣:" + str(n(r.get("LowDiscount")))),
+                        "折扣:" + str(n(r.get("LowDiscount"))))),
                 "deleted": 1 if i(r.get("del")) else 0, "Namepy": upper_py(r.get("pym")),
                 "Pay": 0, "Incumbency": 1, "birthday": cut(r.get("birthday"), 20),
                 "OrderNo": e["old"], "creditupperlimit": 0, "yshouupperlimit": 0,
