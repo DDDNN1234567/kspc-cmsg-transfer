@@ -1,34 +1,34 @@
-col,field,expected,actual,pass
-父项编号,ParId,00001,00001,True
-存货编号,UserCode,0000100001,0000100001,True
-存货全名,FullName,测试123,测试123,True
-简名,Name,测试123,测试123,True
-助记码,Namepy,CS123,CS123,True
-规格,Standard,,,True
-型号,Type,,,True
-产地,Area,,,True
-条码,barcode,1234123123124,1234123123124,True
-基本单位,Unit1,个,个,True
-辅助单位1,Unit2,件,件,True
-单位关系1,UnitRate1,1,100.00000000,False
-入库默认,DefInUnit,个,个,True
-出库默认,DefOutUnit,个,个,True
-参考零售价,recPrice,0,0,True
-最低售价,MinSalePrice,0,0.0000,True
-一级批发价,preprice1,0,0.0000,True
-二级批发价,preprice2,0,0.0000,True
-三级批发价,preprice3,0,0.0000,True
-四级批发价,preprice4,0,0.0000,True
-五级批发价,preprice5,0,0.0000,True
-备注,Comment,竞驰导入|原编号:00101|原ID:2|规格组:1|饿啊上的,竞驰导入|原编号:00101|原ID:2|规格组:1|饿啊上的,True
-成本计价,costmode,移动平均法,移动平均法,True
-管理批号,bBlockNo,否,否,True
-近效期先出库,TakeOut,否,否,True
-核算方法,PObject,库存商品,库存商品,True
-参考成本,CostPrice,,0.0000,True
-T_Jxc_PtypeUnit 基本单位,T_Jxc_PtypeUnit,个,个,True
-T_Jxc_PtypeUnit 辅助单位1,T_Jxc_PtypeUnit,件,件,True
-T_Jxc_PtypeUnit 辅助单位关系,T_Jxc_PtypeUnit.UnitRate,与 ptype.UnitRate1 一致,100.00000000,True
-T_Jxc_PtypeUnit 基本条码,T_Jxc_PtypeUnit.BarCode,1234123123124,1234123123124,True
-xw_PtypeBarCode 条码,xw_PtypeBarCode,1234123123124,1234123123124,True
-ParRec 父记录,ParRec,24,24,True
+col,field,expected,actual,pass,semantic
+父项编号,ParId,00001,00001,True,False
+存货编号,UserCode,0000100001,0000100001,True,False
+存货全名,FullName,测试123,测试123,True,False
+简名,Name,测试123,测试123,True,False
+助记码,Namepy,CS123,CS123,True,False
+规格,Standard,,,True,False
+型号,Type,,,True,False
+产地,Area,,,True,False
+条码,barcode,1234123123124,1234123123124,True,False
+基本单位,Unit1,个,个,True,False
+辅助单位1,Unit2,件,件,True,False
+单位关系1,UnitRate1,1,100.00000000,True,True
+入库默认,DefInUnit,个,个,True,False
+出库默认,DefOutUnit,个,个,True,False
+参考零售价,recPrice,0,0,True,False
+最低售价,MinSalePrice,0,0.0000,True,False
+一级批发价,preprice1,0,0.0000,True,False
+二级批发价,preprice2,0,0.0000,True,False
+三级批发价,preprice3,0,0.0000,True,False
+四级批发价,preprice4,0,0.0000,True,False
+五级批发价,preprice5,0,0.0000,True,False
+备注,Comment,竞驰导入|原编号:00101|原ID:2|规格组:1|饿啊上的,竞驰导入|原编号:00101|原ID:2|规格组:1|饿啊上的,True,False
+成本计价,costmode,移动平均法,移动平均法,True,False
+管理批号,bBlockNo,否,否,True,False
+近效期先出库,TakeOut,否,否,True,False
+核算方法,PObject,库存商品,库存商品,True,False
+参考成本,CostPrice,,0.0000,True,False
+T_Jxc_PtypeUnit 基本单位,T_Jxc_PtypeUnit,个,个,True,False
+T_Jxc_PtypeUnit 辅助单位1,T_Jxc_PtypeUnit,件,件,True,False
+T_Jxc_PtypeUnit 辅助单位关系,T_Jxc_PtypeUnit.UnitRate,与 ptype.UnitRate1 一致,100.00000000,True,False
+T_Jxc_PtypeUnit 基本条码,T_Jxc_PtypeUnit.BarCode,1234123123124,1234123123124,True,False
+xw_PtypeBarCode 条码,xw_PtypeBarCode,1234123123124,1234123123124,True,False
+ParRec 父记录,ParRec,24,24,True,False
