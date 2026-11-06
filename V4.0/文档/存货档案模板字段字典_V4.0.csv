@@ -1,0 +1,34 @@
+序号,模板列,模板样例,源表.字段,源值,目标表.字段,目标值,类型,规则说明
+1,父项编号,00001,t_base_goods_inner.PAR_ID,1,ptype.ParId,00001,编号,源父 ID 映射为目标父编号；根为 00000；父行 Rec 同步写入 ParRec
+2,存货编号,0000100001,t_base_goods_inner.ID,2,ptype.typeId,0000100001,编号,按 PAR_ID 级联生成 5 位段编号；UserCode 同 typeId
+3,存货全名,测试123,t_base_goods_inner.fullname,测试123,ptype.FullName,测试123,文本,直接对应，截 132；为空回退 name
+4,简名,测试123,t_base_goods_inner.name,空,ptype.Name,测试123,文本,源为空时回退 fullname；截 60
+5,助记码,CS123,t_base_goods_inner.pym,cs123,ptype.Namepy,CS123,文本,转大写
+6,规格,空,t_base_goods_inner.standard,空,ptype.Standard,空,文本,直接对应，截 240
+7,型号,空,t_base_goods_inner.xh,空,ptype.Type,空,文本,直接对应，截 120
+8,产地,空,t_base_goods_inner.addr,空,ptype.Area,空,文本,直接对应，截 60
+9,条码,1234123123124,t_base_goods_inner.barcode,1234123123124,ptype.barcode / T_Jxc_PtypeUnit.BarCode / xw_PtypeBarCode.BarCode,1234123123124,文本,三处同写；xw_PtypeBarCode.UnitID 固定数字串 '0'
+10,基本单位,个,t_base_goods_inner.unit1,个,ptype.Unit1 / T_Jxc_PtypeUnit.UnitName(nUnit=1),个,单位,源空补“个”；nUnit=1 的 UnitRate 恒为 1
+11,辅助单位1,件,t_base_goods_inner.unit2,件,ptype.Unit2 / T_Jxc_PtypeUnit.UnitName(nUnit=2),件,单位,辅助单位1；Unit2 非空时写 nUnit=2
+12,单位关系1,1,t_base_goods_inner.unitrelation2,100,ptype.UnitRate1 / T_Jxc_PtypeUnit.UnitRate(nUnit=2),100,数值,财贸 UnitRate1 是辅助单位1 的换算率；取 unitrelation2，不取恒为 1 的 unitrelation。模板样例 1 为旧版回显
+13,入库默认,个,无（常量）,—,ptype.DefInUnit,1,枚举,固定 1；1 表示基本单位，模板按单位名显示“个”
+14,出库默认,个,无（常量）,—,ptype.DefOutUnit,1,枚举,固定 1；1 表示基本单位
+15,参考零售价,0,t_base_goods_inner.recprice,0,ptype.recPrice,0,金额,参考零售价；不要与源 price 的零售价混用
+16,最低售价,0,t_base_goods_inner.lowprice,0,ptype.MinSalePrice,0,金额,直接对应；同时写 T_Jxc_PtypeUnit.MinSalePrice(nUnit=1)
+17,一级批发价,0,t_base_goods_inner.price1,0,ptype.preprice1,0,金额,按模板一级对应 preprice1；实测源/目标均为 0
+18,二级批发价,0,t_base_goods_inner.price2,0,ptype.preprice2,0,金额,按模板二级对应 preprice2；实测源/目标均为 0
+19,三级批发价,0,t_base_goods_inner.price3,0,ptype.preprice3,0,金额,按模板三级对应 preprice3；实测源/目标均为 0
+20,四级批发价,0,t_base_goods_inner.price,0,ptype.preprice4,0,金额,V4 当前实现将源 price 写入 preprice4；源 price 语义偏零售价，完整模板复核时应确认列位
+21,五级批发价,0,t_base_goods_inner.price4,0,ptype.preprice5,0,金额,V4 当前实现将源 price4 写入 preprice5；源 price5 另写 preprice6，属模板外扩展
+22,备注,竞驰导入|原编号:00101|原ID:2|规格组:1|饿啊上的,t_base_goods_inner.comment + code + ID + sizegroupid,饿啊上的,ptype.Comment,竞驰导入|原编号:00101|原ID:2|规格组:1|饿啊上的,文本,前置标记 + 原编号 + 原ID + 规格组 + 源备注；用于幂等和溯源
+23,成本计价,移动平均法,t_base_goods_inner.costmode,0,ptype.costmode,0,枚举,0=移动平均法；仅 0/1/3/4 合法，其余按 0；官方读取 pCostModeName 回显
+24,管理批号,否,t_base_goods_inner.serialType,0,ptype.bBlockNo,0,布尔,0=否；V4 当前按目标默认 0，未显式写源 serialType
+25,近效期先出库,否,无（默认）,—,ptype.TakeOut,False,布尔,V4 当前按目标默认 False；模板“否”
+26,核算方法,库存商品,无（默认）,—,ptype.PObject,0,枚举,0=库存商品；V4 当前按目标默认 0
+27,参考成本,空,t_base_goods_inner.ysBuyPrice,0,ptype.CostPrice,0,金额,直接对应；模板空值与目标 0 按空/0 互认
+28,关联-基本单位,个,t_base_goods_inner.unit1,个,T_Jxc_PtypeUnit(nUnit=1).UnitName / UnitRate / BarCode,个 / 1 / 1234123123124,关联,基本单位行；IsBase=1 的对应关系在 xw_PtypeUnit
+29,关联-辅助单位1,件,t_base_goods_inner.unit2 / unitrelation2,件 / 100,T_Jxc_PtypeUnit(nUnit=2).UnitName / UnitRate,件 / 100,关联,辅助单位1 行；换算率必须与 ptype.UnitRate1 一致
+30,关联-基本条码,1234123123124,t_base_goods_inner.barcode,1234123123124,T_Jxc_PtypeUnit(nUnit=1).BarCode,1234123123124,关联,基本单位行条码
+31,关联-条码表,1234123123124,t_base_goods_inner.barcode,1234123123124,xw_PtypeBarCode.BarCode / UnitID,1234123123124 / 0,关联,xw_PtypeBarCode 独立条码表；UnitID 必须数字串
+32,关联-父记录,24（父行 Rec）,t_base_goods_inner.PAR_ID,1,ptype.ParRec,24,关联,非根行 ParRec=父行 Rec；官方新增导入过程会维护；五表同规则
+33,关联-官方读取,测试123,—,—,xw_GetBasicData 'P' 输出,3 行；商品 UnitRate1=100 / UnitRate2=1 / unit2=件,验证,官方读取链路；42 列输出不含 ParRec，父记录需直接查表
