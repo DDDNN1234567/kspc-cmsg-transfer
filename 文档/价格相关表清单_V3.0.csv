@@ -1,0 +1,32 @@
+表,行数,价格/折扣字段,对象
+T_base_wldw_inner,4,discount,往来单位
+t_base_goods_inner,2,price / price1 / price2 / price3 / pf_price / recprice / recprice1 / recdiscount / lowprice / vipprice / specialprice / discount / price4 / price5 / ysBuyPrice / U2Price / U2LowPrice / U2PfPrice / U2YsBuyPrice / U2Price1 / U2Price2 / U2Price3 / U2Price4 / U2Price5 / U3Price / U3LowPrice / U3PfPrice / U3YsBuyPrice / U3Price1 / U3Price2 / U3Price3 / U3Price4 / U3Price5 / U4Price / U4LowPrice / U4PfPrice / U4YsBuyPrice / U4Price1 / U4Price2 / U4Price3 / U4Price4 / U4Price5 / U2VipPrice / U3VipPrice / U4VipPrice / recprice2 / recprice3 / recprice4,存货商品
+t_base_employees,1,LowDiscount,职员
+t_base_goodsstock,1,price,结存库存
+t_base_wldw_join,1,discount,往来关系
+t_prime_goodsstock,1,price,期初库存
+t_base_goodsprice,0,price / price1 / price2 / price3 / pf_price / lowprice / vipprice / specialprice / discount,未迁移
+t_base_goodsstock_pd,0,price,未迁移
+t_base_Jjjc,0,price,未迁移
+t_base_price,0,costprice / saleprice / buydiscount / salediscount,客户价格追踪
+t_base_wtst,0,price,未迁移
+t_Client_Price_goods,0,oldPrice / NowPrice,未迁移
+t_cx_cxd_goodsdetail,0,discount / CxPrice,未迁移
+t_dj_o_order,0,discount / discountprice / costprice / price / TaxPrice / discounttotal / FzdiscountPrice / FzdiscountTotal / FzTaxPrice / FzPrice,未迁移
+t_dj_p_buy,0,discount / discountprice / costprice / price / TaxPrice / discounttotal / FzdiscountPrice / FzdiscountTotal / FzTaxPrice / FzPrice,未迁移
+t_dj_p_draft,0,discount / discountprice / JoinCostPrice / costprice / price / TaxPrice / discounttotal / FzdiscountPrice / FzdiscountTotal / FzTaxPrice / FzPrice / TdCostPrice,未迁移
+t_dj_p_draft_join,0,discount / discountprice / costprice / price / TaxPrice / discounttotal / FzdiscountPrice / FzdiscountTotal / FzTaxPrice / FzPrice,未迁移
+t_dj_p_index,0,vipdiscount / zddiscount,未迁移
+t_dj_p_index_Join,0,vipdiscount / zddiscount,未迁移
+t_dj_p_index_retail,0,vipdiscount / zddiscount,未迁移
+t_dj_p_other,0,discount / discountprice / costprice / price / TaxPrice / discounttotal / FzdiscountPrice / FzdiscountTotal / FzTaxPrice / FzPrice,未迁移
+t_dj_p_sale,0,discount / discountprice / JoinCostPrice / costprice / price / TaxPrice / discounttotal / FzdiscountPrice / FzdiscountTotal / FzTaxPrice / FzPrice,未迁移
+t_dj_p_sale_join,0,discount / discountprice / costprice / price / TaxPrice / discounttotal / FzdiscountPrice / FzdiscountTotal / FzTaxPrice / FzPrice,未迁移
+t_dj_p_sale_retail,0,discount / discountprice / JoinCostPrice / costprice / price / TaxPrice / discounttotal / FzdiscountPrice / FzdiscountTotal / FzTaxPrice / FzPrice,未迁移
+t_dj_pddetail,0,price,未迁移
+t_join_goodsstock,0,price,未迁移
+t_join_prime_goodsstock,0,price,未迁移
+t_prime_Jjjc,0,price,未迁移
+t_prime_wtst,0,price,未迁移
+t_vip_cards,0,lastdiscounttotal / add_discounttotal / add_Jfdiscounttotal,未迁移
+t_vip_cardtypes,0,discount / HyjPriceType / userSysPrice,未迁移
