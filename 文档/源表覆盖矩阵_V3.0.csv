@@ -13,7 +13,7 @@ t_base_file,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_base_goods_inner,2,存货商品,ptype + T_Jxc_PtypeUnit,已映射,逐字段映射
 T_Base_Goods_inner_UserAuth,2,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_base_goods_Property,0,未迁移,,未迁移,源表无对应目标结构，保留源库
-t_base_GoodsBar,0,商品条码,xw_PtypeBarCode,已映射,逐字段映射
+t_base_GoodsBar,1,商品条码,xw_PtypeBarCode,已映射,逐字段映射
 t_base_goodsprice,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_base_goodsstock,1,结存库存,GoodsStocks + GoodsStockscost,已映射,逐字段映射
 t_base_goodsstock_pd,0,未迁移,,未迁移,源表无对应目标结构，保留源库
@@ -32,8 +32,8 @@ T_Base_storage_inner_UserAuth,4,未迁移,,未迁移,仓库可见权限：目标
 t_base_temp_serial,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 T_Base_UserPosConf,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 T_Base_Wldw_Call,0,未迁移,,未迁移,源表无对应目标结构，保留源库
-T_base_wldw_inner,4,往来单位,Btype,已映射,逐字段映射
-T_Base_wldw_inner_UserAuth,4,未迁移,,未迁移,往来单位可见权限：目标按用户重新授权
+T_base_wldw_inner,5,往来单位,Btype,已映射,逐字段映射
+T_Base_wldw_inner_UserAuth,5,未迁移,,未迁移,往来单位可见权限：目标按用户重新授权
 t_base_wldw_join,1,往来关系,Btype（可选）,已映射,逐字段映射
 T_Base_Wldw_Leveal,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 T_Base_WldwGoodsCode,0,未迁移,,未迁移,源表无对应目标结构，保留源库
@@ -48,7 +48,7 @@ t_cx_cxd_goodsdetail,0,未迁移,,未迁移,源表无对应目标结构，保留
 t_cx_cxd_wldwdetail,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_bh,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_conf,54,未迁移,,未迁移,单据字段配置：属程序配置，不迁移
-t_dj_gathering,0,未迁移,,未迁移,源表无对应目标结构，保留源库
+t_dj_gathering,1,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_gathering_Goods,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_o_index,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_o_order,0,未迁移,,未迁移,源表无对应目标结构，保留源库
@@ -58,13 +58,13 @@ t_dj_p_draft,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_draft_join,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_draft_join_serial,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_draft_serial,0,未迁移,,未迁移,源表无对应目标结构，保留源库
-t_dj_p_index,0,未迁移,,未迁移,源表无对应目标结构，保留源库
+t_dj_p_index,1,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_index_Join,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_index_retail,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_inputlevel,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_other,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_other_serial,0,未迁移,,未迁移,源表无对应目标结构，保留源库
-t_dj_p_sale,0,未迁移,,未迁移,源表无对应目标结构，保留源库
+t_dj_p_sale,1,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_sale_join,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_sale_join_serial,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_p_sale_retail,0,未迁移,,未迁移,源表无对应目标结构，保留源库
@@ -73,7 +73,7 @@ t_dj_p_sale_serial,0,未迁移,,未迁移,源表无对应目标结构，保留�
 t_dj_p_SerialChange,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_pddetail,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_dj_pdindex,0,未迁移,,未迁移,源表无对应目标结构，保留源库
-t_dj_pz,0,未迁移,,未迁移,源表无对应目标结构，保留源库
+t_dj_pz,5,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_join_goodsstock,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_join_prime_goodsstock,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_join_prime_SerialNum,0,未迁移,,未迁移,源表无对应目标结构，保留源库
@@ -85,12 +85,12 @@ t_prime_wtst,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_Sc_Detail,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 t_Sc_Index,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 T_Sys_AutoCol,53,未迁移,,未迁移,列表列配置：不迁移
-T_Sys_BillNo,0,未迁移,,未迁移,源表无对应目标结构，保留源库
+T_Sys_BillNo,1,未迁移,,未迁移,源表无对应目标结构，保留源库
 T_Sys_Blob,2,未迁移,,未迁移,二进制附件：不迁移
-T_Sys_ColSetting,6,未迁移,,未迁移,列显示配置：不迁移
+T_Sys_ColSetting,11,未迁移,,未迁移,列显示配置：不迁移
 T_Sys_Conf,40,未迁移,,未迁移,程序配置：目标客户端自有配置
 T_Sys_Data,111,未迁移,,未迁移,系统参数：目标客户端自有参数
-T_Sys_Log,9,未迁移,,未迁移,操作日志：不迁移
+T_Sys_Log,13,未迁移,,未迁移,操作日志：不迁移
 T_Sys_Msg,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 T_Sys_Msg_Attach,0,未迁移,,未迁移,源表无对应目标结构，保留源库
 T_Sys_Purview,324,未迁移,,未迁移,功能权限：目标账套按用户重新授权
