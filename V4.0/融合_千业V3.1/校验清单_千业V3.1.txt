@@ -1,22 +1,42 @@
-竞驰管家婆一键资料互传  v1.1  交付校验清单
-生成时间：2026-11-05
-算法：SHA256
-================================================================================================
-竞驰管家婆一键资料互传.exe
-  13,786,519 字节   35EE1F94E4EBCB5D5A34A7EFF2AF4F2EDF367503C45E8F5229060BD3C891B62E
-文档\竞驰管理通-管家婆辉煌对应数据字典.md
-      17,536 字节   CE77BB5066DB1E308EEEEA03FCFCDC17F7930FB65866BB37FFC3DFFE50419592
-文档\竞驰七表完整列清单.md
-      12,220 字节   2329A570EAB7D6A6FE0888E3C02F8567C544219C61D06295FE53FE464FC1AAFB
-文档\使用说明.md
-       7,907 字节   4194B9B128CFDD21EE14C5093D8870F06B8B8C7ECE39D5D5C9411DAB9BDA2223
-文档\README.md
-       6,831 字节   23183F83B420E95665175FB075ECC2C9E6658E845772A83474A0B333D75A48F5
-源码\gpj_kspc_adapter.py
-      28,821 字节   23D946B3318D9E6B4CAE350F63BC592FE4FFB33D8952FF68227D61CA07205C54
-源码\gpj_kspc_gui.py
-      23,792 字节   10F06C1CB019DF4744E79B0D59122BBAAD2D678561088A9C06E60CF550956E0A
-源码\gpj_top15_core.py
-      39,617 字节   3192FAB054A28EF08F231C45B92BEFE644E4D29DC75EE60FCCA9B3D087AF428E
-================================================================================================
-合计：8 个文件，13,923,243 字节
+============================================================
+ 管家婆 TOP15 双向直导工具  v3.1  完整版校验清单
+ 生成时间：2026-11-05
+ 仓库：https://github.com/DDDNN1234567/grasp-top15-import-tool
+============================================================
+
+【主程序】
+文件：管家婆TOP15双向直导工具.exe（onefile，免安装，双击即用）
+大小：13866797 字节（约 13.22 MB）
+SHA256：7124147B5FDDAF74F0D31EABDFC38613F16B8687C3BFF3A545FDFB5674124B9F
+
+【目录说明】
+.\管家婆TOP15双向直导工具.exe   可直接运行的主程序
+.\源码\                        4 个 Python 源文件（core/gui/srcimport/srcexport）
+.\文档\                        README、使用说明、两本数据词典
+.\校验清单.txt                 本文件
+
+【全部文件 SHA256】
+7124147B5FDDAF74F0D31EABDFC38613F16B8687C3BFF3A545FDFB5674124B9F  13866797  管家婆TOP15双向直导工具.exe
+3192FAB054A28EF08F231C45B92BEFE644E4D29DC75EE60FCCA9B3D087AF428E  39617  源码\gpj_top15_core.py
+45A197C71FB870AA15E798E47BF7995EA36507723396CEC21648B2DD5DFC3A1B  38801  源码\gpj_top15_gui.py
+0EC7532385C140005ECFD28F93772A9B1F0DA3C60133AED15AF5E9E5DB163F28  28592  源码\gpj_top15_srcexport.py
+DBFAD550896D3D4421AD9C36AE2188C17EFD1233822B858BA0E6C986C36E9679  40280  源码\gpj_top15_srcimport.py
+9A2BABA337815EA6D049C73E7A1726B0F6ABFF18EE47D634CA12BC7170E4C9EC  25428  文档\管家婆辉煌TOP15数据库词典.md
+24676993528A5AE91D0EAA6D8E5E7A3A6AF6A5D9F87C035D2C6125A0961889DE  8681  文档\管家婆TOP15一键导入工具_使用说明.md
+C70DFE195F22ACFB2DFE0DAFECF74D19BF50BE94114F5B82DDE0D370AC1BC63C  29213  文档\千业管理通-管家婆辉煌对应数据词典.md
+4D593D3745287E1BD53DBE066D8EB77D06CCC1C4B0FBC91F0E32F00E9CAAF07E  9942  文档\README.md
+
+【完整性校验方法】
+PowerShell 中执行：
+  Get-FileHash -LiteralPath ".\管家婆TOP15双向直导工具.exe" -Algorithm SHA256
+若输出哈希与本清单一致即完整未被篡改。
+
+【v3.1 主要能力】
+1. 千业商贸通 Bas 库 .mdf/.ldf 自动附加向导（选文件→ATTACH→连接→导入，免手工）
+2. 版本感知驱动矩阵（2005→SNAC；2008+→ODBC17/18），老环境容错
+3. 数据库连接后下拉手工选择（可手填）+ 刷新库
+4. 字段动态补全、基于 BaseNo 差异的增量 upsert
+5. 事务回滚加固 + 一键回滚最近备份
+6. Excel 接口 xlrd 容错（.xls 走 xlrd 1.2.0，其余 openpyxl）
+7. 正向（千业→管家婆）全字段无缝导入
+============================================================
